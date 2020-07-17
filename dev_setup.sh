@@ -95,6 +95,16 @@ function get_YN() { # helper function for interactive questions
 ###############################################################################
 ## Main setup
 
+printf "Setting up configurable environment variables...\n"
+printf "$spacer"
+if [ ! -f .env ]; then
+  cp example.env .env
+fi
+
+if [ ! -f .env.bt ]; then
+  cp example.env.bt .env.bt
+fi
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
   if ! found_exe brew; then
     echo "${YELLOW}Homebrew is required to install dependencies: https://docs.brew.sh/Installation${RESET}"
